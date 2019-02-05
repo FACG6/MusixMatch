@@ -1,0 +1,22 @@
+{
+  "name": "musixmatch",
+  "version": "1.0.0",
+  "description": "Back-end api request",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FACG6/MusixMatch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FACG6/MusixMatch/issues"
+  },
+  "homepage": "https://github.com/FACG6/MusixMatch#readme",
+  "devDependencies": {
+    "supertest": "^3.4.2"
+  }
+}
