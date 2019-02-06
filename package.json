@@ -4,7 +4,9 @@
   "description": "Back-end api request",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape ./test/test.js | tap-spec",
+    "start":"node ./src/server.js",
+    "live":"nodemon ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,10 @@
     "eslint": "^5.13.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "supertest": "^3.4.2"
+    "nodemon": "^1.18.9",
+    "supertest": "^3.4.2",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.2"
   },
   "dependencies": {
     "dotenv": "^6.2.0"
