@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Music Lyrics</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-        <div>
+    <div class="first_search">
         <label for="inputSearch">Search by song title:</label>
         <br>
         <input type="text" name="text" id="titleSearchForm">
         <input type="submit" name="search" id="titleSearchButton">
-        </div>
-        <br><br>
-        <div>
-            <label for="inputSearch">Search for songs by a piece of lyrics:</label>
-            <br>
-            <input type="text" name="text" id="keywordSearchForm">
-            <input type="submit" name="search" id="keywordSearchButton">
-            </div>
+    </div>
+    <br><br>
+    <div class="second_search">
+        <label for="inputSearch">Search for songs by a piece of lyrics:</label>
+        <br>
+        <input type="text" name="text" id="keywordSearchForm">
+        <input type="submit" name="search" id="keywordSearchButton">
+    </div>
     <div id="showData">
-        
+
     </div>
     <script src="../public/js/logic.js"></script>
     <script src="../public/js/dom.js"></script>
 </body>
+
 </html>
