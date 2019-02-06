@@ -7,12 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <!-- <form action="/search" method="POST" name="artistNameSearch"> -->
-        <input type="text" name="text" id="inputSearch">
-        <input type="submit" name="search" id="submit">
-    <!-- </form> -->
+        <div>
+        <label for="inputSearch">Search by song title:</label>
+        <br>
+        <input type="text" name="text" id="titleSearchForm">
+        <input type="submit" name="search" id="titleSearchButton">
+        </div>
+        <br><br>
+        <div>
+            <label for="inputSearch">Search for songs by a piece of lyrics:</label>
+            <br>
+            <input type="text" name="text" id="keywordSearchForm">
+            <input type="submit" name="search" id="keywordSearchButton">
+            </div>
     <div id="showData">
-
+        
     </div>
     <script src="../public/js/logic.js"></script>
     <script src="../public/js/dom.js"></script>

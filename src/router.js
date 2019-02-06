@@ -1,4 +1,4 @@
-const { handleHomePage , handleSearch , handleStatics , handleError } = require('./handler');
+const { handleHomePage , handleSongTitle , handleStatics , handleKeywords , handleError } = require('./handler');
 
 
 let router = (request, response) => {
@@ -8,9 +8,11 @@ let router = (request, response) => {
     }
     
     else if(endpoint === '/search'){
-        handleSearch(request,response);
+        handleSongTitle(request,response);
     }
-
+    else if(endpoint === '/keywordsearch'){
+        handleKeywords(request,response);
+    }
     else if(endpoint.includes('public')){
         handleStatics(request,response);
     }
