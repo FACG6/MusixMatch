@@ -1,0 +1,24 @@
+body{
+    background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+}
+
+.first_search{
+}
+
+.second_search{
+   margin-top: 100px;
+}
+
+input[type="text"]{
+    height: 30px;
+    padding: 10px;
+    width: 400px;
+}
+
+input[type="submit"]{
+    height: 55px;
+    padding: 10px;
+    background-color: #43e97b;
+    width: 100px;
+    cursor: pointer;
+}
