@@ -10,14 +10,12 @@ titleSearchButton.addEventListener('click', () => {
         if (response == 'Error, no lyrics were found') {
             let text = document.createElement('p');
             text.innerText = 'Error';
-            console.log(response, 'this is the Error text')
             showDataDiv.appendChild(text);
         }
         else {
-            console.log(response, 'this is the received data');
             let text = document.createElement('p');
-            text.innerText = response;
-            console.log(text, 'this is the text')
+            const result = JSON.parse(response);
+            text.innerText = result;
             showDataDiv.appendChild(text);
         }
     })
@@ -30,15 +28,12 @@ keywordSearchButton.addEventListener('click', () => {
         if (response == 'Error, no lyrics were found') {
             let text = document.createElement('p');
             text.innerText = 'Error';
-            console.log(response, 'this is the Error text')
             showDataDiv.appendChild(text);
         }
         else {
             const parsedResponse = JSON.parse(response);
             const ul = document.createElement('ul')
             Object.keys(parsedResponse).forEach((item) => {
-                console.log(item);
-                console.log(parsedResponse[item].track);
                 const li = document.createElement('li');
                 li.style.listStyle = 'none';
                 li.appendChild(document.createTextNode(parsedResponse[item].track.track_name))

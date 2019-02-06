@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 const path = require('path');
 const fs = require('fs');
 const req = require('request');
@@ -32,7 +32,7 @@ const handleSongTitle = (request, response) => {
         request.on('end', () => {
             const API_KEY = process.env.apiKey;
             let q_track = allData.split(' ').join('%20');
-            let track_method = 'matcher.lyrics.get'; //chart.tracks.get(to search for songs contain some text)
+            let track_method = 'matcher.lyrics.get';
             const options = {
                 url: `https://api.musixmatch.com/ws/1.1/${track_method}?format=json&callback=callback&q_track=${q_track}&apikey=${API_KEY}`,
                 method: 'GET',
@@ -97,13 +97,11 @@ const handleKeywords = (request, response) => {
                 }
                  else {
                     const parsedBody = JSON.parse(body);
-                    // console.log('ddddddddddddddddddddddddfffffffffffff555555555',parsedBody.message.body.track_list);
                     if (parsedBody.message.body.track_list) {
                         response.writeHead(200, {
                             'Content-Type': 'application/json',
                         });
                         const dataToBeSent = (JSON.stringify(parsedBody.message.body.track_list)).split('\n').join(' ');
-                        console.log(dataToBeSent);
                         response.end(dataToBeSent);
                     }
                     else {
@@ -150,4 +148,6 @@ const handleError = (request, response) => {
     response.writeHead(404, { 'content-type': 'text/html' });
     response.end('<h1>Server Error</h1>')
 }
+if(module){
 module.exports = { handleHomePage, handleSongTitle, handleKeywords , handleStatics, handleError }
+}
