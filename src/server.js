@@ -1,6 +1,6 @@
 const http = require('http');
 const router = require('./router');
-
-http.createServer(router).listen(5000, () => {
+const port = process.env.PORT || 5000;
+http.createServer(router).listen(port, () => {
   console.log('server is running at port 5000');
 });
