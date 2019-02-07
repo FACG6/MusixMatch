@@ -32,9 +32,9 @@ const handleSongTitle = (request, response) => {
         request.on('end', () => {
             const API_KEY = process.env.apiKey;
             let q_track = allData.split(' ').join('%20');
-            let track_method = 'matcher.lyrics.get';
+            let track_method = 'track.lyrics.get';
             const options = {
-                url: `https://api.musixmatch.com/ws/1.1/${track_method}?format=json&callback=callback&q_track=${q_track}&apikey=${API_KEY}`,
+                url: `https://api.musixmatch.com/ws/1.1/${track_method}?format=json&callback=callback&track_id=${q_track}&apikey=${API_KEY}`,
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -50,12 +50,11 @@ const handleSongTitle = (request, response) => {
                     response.end('<h1>Server Error</h1>');
                 } else {
                     const parsedBody = JSON.parse(body);
-                    if (parsedBody.message.body.lyrics) {
+                    if (parsedBody.message) {
                         response.writeHead(200, {
                             'Content-Type': 'application/json',
                         });
-                        const dataToBeSent = JSON.stringify((parsedBody.message.body.lyrics.lyrics_body).split('\n').join(' '));
-                        response.end(dataToBeSent);
+                        response.end(JSON.stringify(parsedBody));
                     }
                     else {
                         response.writeHead(200, {
@@ -77,10 +76,10 @@ const handleKeywords = (request, response) => {
         });
         request.on('end', () => {
             const API_KEY = process.env.apiKey;
-            let f_has_lyrics = allData.split(' ').join('%20');
-            let track_method = 'chart.tracks.get';
+            let f_has_lyrics = allData;
+            let track_method = 'track.search';
             const options = {
-                url: `https://api.musixmatch.com/ws/1.1/${track_method}?format=json&callback=callback&country=us&q_track=${f_has_lyrics}&apikey=${API_KEY}`,
+                url: `https://api.musixmatch.com/ws/1.1/${track_method}?format=json&callback=callback&q_lyrics=${f_has_lyrics}&f_lyrics_language=en&quorum_factor=1&apikey=${API_KEY}`,
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -90,19 +89,17 @@ const handleKeywords = (request, response) => {
 
             req(options, (err, res, body) => {
                 if (err) {
-                    response.writeHead(500, {
+                    response.writeHead(500, { 
                         'Content-Type': 'text/html',
                     });
                     response.end('<h1>Server Error</h1>');
                 }
                  else {
-                    const parsedBody = JSON.parse(body);
-                    if (parsedBody.message.body.track_list) {
+                    if (JSON.parse(body).message.body.track_list){
                         response.writeHead(200, {
                             'Content-Type': 'application/json',
                         });
-                        const dataToBeSent = (JSON.stringify(parsedBody.message.body.track_list)).split('\n').join(' ');
-                        response.end(dataToBeSent);
+                        response.end(JSON.stringify(JSON.parse(body).message.body.track_list));
                     }
                     else {
                         response.writeHead(200, {
