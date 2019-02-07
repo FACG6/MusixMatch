@@ -29,7 +29,6 @@
     "tape": "^4.9.2"
   },
   "dependencies": {
-    "dotenv": "^6.2.0",
-    "request": "^2.88.0"
+    "dotenv": "^6.2.0"
   }
 }
