@@ -14,7 +14,7 @@ titleSearchButton.addEventListener('click', () => {
         }
         else {
             let text = document.createElement('p');
-            const result = JSON.parse(response);
+            const result = JSON.parse(response).message.body.lyrics.lyrics_body;
             text.innerText = result;
             showDataDiv.appendChild(text);
         }
@@ -31,14 +31,14 @@ keywordSearchButton.addEventListener('click', () => {
             showDataDiv.appendChild(text);
         }
         else {
-            const parsedResponse = JSON.parse(response);
             const ul = document.createElement('ul')
-            Object.keys(parsedResponse).forEach((item) => {
+            const parsedRes = JSON.parse(response);
+            
+            for(let i =0; i< parsedRes.length;i++){
                 const li = document.createElement('li');
-                li.style.listStyle = 'none';
-                li.appendChild(document.createTextNode(parsedResponse[item].track.track_name))
+                li.appendChild(document.createTextNode(parsedRes[i].track.track_name + ",    track id  " +'  '+ parsedRes[i].track.track_id));
                 ul.appendChild(li);
-            });
+            }
             const header = document.createElement('h2')
             const header1 = document.createTextNode('Matched tracks');
             header.appendChild(header1);
