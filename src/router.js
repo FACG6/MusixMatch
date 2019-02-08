@@ -1,4 +1,4 @@
-const { handleHomePage , handleSongTitle , handleStatics , handleKeywords , handleError } = require('./handler');
+const { handleHomePage, handleSearchById, handleStatics, handleKeywords, handleError } = require('./handler');
 
 
 let router = (request, response) => {
@@ -8,7 +8,7 @@ let router = (request, response) => {
     }
     
     else if(endpoint === '/search'){
-        handleSongTitle(request,response);
+        handleSearchById(request,response);
     }
     else if(endpoint === '/keywordsearch'){
         handleKeywords(request,response);

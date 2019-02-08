@@ -7,7 +7,7 @@ const logicFuc = (url, method, data, cb) => {
                 cb(response);
             }
             else{
-                cb('Error');
+                cb('Internal server Error');
             }
         }
         
