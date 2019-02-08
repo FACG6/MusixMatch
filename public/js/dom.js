@@ -38,8 +38,8 @@ idSearchButton.addEventListener('click', () => {
 
 
 keywordSearchButton.addEventListener('click', () => {
+    showDataDiv.innerHTML = '';
     if (keywordSearchForm.value !== '' && language.value !== '') {
-        showDataDiv.innerHTML = '';
         idSearchForm.value = '';
         const dataArray = [keywordSearchForm.value, language.value];
         logicFuc('POST', '/keywordsearch', JSON.stringify(dataArray), (response) => {
